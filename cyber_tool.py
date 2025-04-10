@@ -10,8 +10,8 @@ def info_gathering():
     try:
         res = requests.get(url)
         soup = BeautifulSoup(res.text, 'html.parser')
-        print(f"Welcome to the Cyber Multi Tool!")
-[+] Title: {soup.title.string if soup.title else 'N/A'}")
+        print("Welcome to the Cyber Multi Tool!")
+print(f"[+] Title: {soup.title.string if soup.title else 'N/A'}")
         print(f"[+] Server Header: {res.headers.get('Server', 'N/A')}")
         print(f"[+] X-Powered-By: {res.headers.get('X-Powered-By', 'N/A')}")
     except Exception as e:
